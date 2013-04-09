@@ -1,13 +1,12 @@
 package org.github.grails.taglib.bootstrap.basecss
 
-import static org.github.grails.taglib.bootstrap.Attribute.*;
-
 import org.codehaus.groovy.grails.web.servlet.FlashScope;
+import org.github.grails.taglib.bootstrap.BaseTagLib;
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.UseAttributeSets;
 
-class TableTagLib {
+class TableTagLib extends BaseTagLib {
 	static namespace = "bs"
 	static final String COMPONENT_NAME = "table" 
 	static final String COLUMN_COUNTER_PROPERTY = "columnCount"
@@ -15,19 +14,19 @@ class TableTagLib {
 	def table = {attrs, body ->
 		def baseClass = (attrs.'class'?:'') + " table"
 		
-		if(attrs.remove('striped') == 'true') {
+		if(Boolean.valueOf(attrs.remove('striped'))) {
 			addToClass(attrs, "table-striped")
 		}
 		
-		if(attrs.remove('bordered') == 'true') {
+		if(Boolean.valueOf(attrs.remove('bordered'))) {
 			addToClass(attrs, "table-bordered")
 		}
 		
-		if(attrs.remove('hover') == 'true') {
+		if(Boolean.valueOf(attrs.remove('hover'))) {
 			addToClass(attrs, "table-hover")
 		}
 		
-		if(attrs.remove('condensed') == 'true') {
+		if(Boolean.valueOf(attrs.remove('condensed'))) {
 			addToClass(attrs, "table-condensed")
 		}
 		

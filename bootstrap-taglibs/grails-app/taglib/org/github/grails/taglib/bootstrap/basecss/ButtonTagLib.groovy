@@ -2,7 +2,7 @@ package org.github.grails.taglib.bootstrap.basecss
 
 import org.github.grails.taglib.bootstrap.BaseTagLib;
 
-class ButtonTagLib extends BaseTagLib{
+class ButtonTagLib extends BaseTagLib {
 
 	static namespace = "bs"
 	
@@ -15,9 +15,9 @@ class ButtonTagLib extends BaseTagLib{
 	 * @attr muted Change an element's color to <code>#999</code>
 	 * @attr clearfix Clear the <code>float</code> on this element
 	 */
-	def buttonGroup = {attrs, body ->
-		def vertical = Boolean.valueOf(attrs.remove('vertical'))
-		if(vertical) {
+	Closure buttonGroup = {attrs, body ->
+		
+		if(Boolean.valueOf(attrs.remove('vertical'))) {
 			addToClass(attrs, "btn-group-vertical")
 		}
 		
@@ -35,7 +35,7 @@ class ButtonTagLib extends BaseTagLib{
 	* @attr muted Change an element's color to <code>#999</code>
 	* @attr clearfix Clear the <code>float</code> on this element
 	*/
-	def buttonToolbar = {attrs, body ->
+	Closure buttonToolbar = {attrs, body ->
 		defaultClasses(attrs, "btn-toolbar")
 		
 		out << "<div " << outputAttributes(attrs, out) << " >"
@@ -43,8 +43,8 @@ class ButtonTagLib extends BaseTagLib{
 		out << "</div>"
 	}
 	
-	def menuButton = {attrs, body->
-		attrs.dropdown = "true"
+	Closure menuButton = {attrs, body->
+		attrs.dropdown = true
 		g.button(attrs){body()}
 	}
 	
@@ -64,7 +64,7 @@ class ButtonTagLib extends BaseTagLib{
 	* @attr muted Change an element's color to <code>#999</code>.
 	* @attr clearfix Clear the <code>float</code> on this element.
 	*/
-   def actionSubmit = {attrs, body->
+   Closure actionSubmit = {attrs, body->
 	   def baseClass = "${(attrs.'class'?:'')} btn"
 	   
 	   attrs.type = 'actionSubmit'

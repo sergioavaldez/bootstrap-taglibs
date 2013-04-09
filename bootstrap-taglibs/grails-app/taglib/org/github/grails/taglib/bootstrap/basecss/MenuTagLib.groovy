@@ -24,7 +24,8 @@ class MenuTagLib {
 		defaultClasses(attrs, "${attrs.remove('class') ?: ''} ${attrs.'isDropdown' == 'true' ? ' dropdown' : ''}")
 		def useLink = (!attrs.useLink || attrs.useLink == 'true') ? true : false
 		
-		if(attrs.remove('isDropdown') == 'true') {
+		
+		if(Boolean.valueOf(attrs.remove('dropdown'))) {
 			out << submenuItem(attrs){body()}
 		} else {
 			attrs.remove('useLink')

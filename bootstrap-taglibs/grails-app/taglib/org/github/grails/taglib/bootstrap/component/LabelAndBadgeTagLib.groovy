@@ -1,8 +1,8 @@
 package org.github.grails.taglib.bootstrap.component
 
-import static org.github.grails.taglib.bootstrap.Attribute.*;
+import org.github.grails.taglib.bootstrap.BaseTagLib;
 
-class LabelAndBadgeTagLib {
+class LabelAndBadgeTagLib extends BaseTagLib {
 
 	static namespace = "bs"
 	

@@ -14,27 +14,23 @@ class FormTagLib {
 	public static final String CURRENT_FORM_URL 			= 'currentFormURL'
 	
 	def form = {attrs, body ->
-		def baseClass = "${(attrs.'class'?:'')} form"
+		def baseClass = "form"
 		 
 		def type = attrs.remove('type') 
 		
 		pageScope."$CURRENT_FORM_URL" = g.createLink(attrs)
 		
-		if(type == "search" || attrs.remove('search') == 'true') {
+		if(Boolean.valueOf(attrs.remove('search'))) {
 			baseClass = baseClass.concat('-search')
 			pageScope."$IN_SEARCH_FORM" = true
-		} else if(type == "inline" || attrs.inline == 'true') {
+		} else if(Boolean.valueOf(attrs.remove('inline'))) {
 			baseClass = baseClass.concat('-inline')
-			attrs.remove('inline')
-		}else if(type == "horizontal" || attrs.remove('horizontal') == 'true') {
+		}else if(Boolean.valueOf(attrs.remove('horizontal'))) {
 			baseClass = baseClass.concat('-horizontal')
-			attrs.remove('horizontal')
 			pageScope."$IN_HORIZONTAL_FORM" = true
 		}
 		
-		attrs.'class' = baseClass.trim()
-		
-		//def formTagLib = grailsApplication.mainContext.getBean('org.codehaus.groovy.grails.plugins.web.taglib.FormTagLib')
+		defaultClasses(attrs, baseClass)
 		
 		if(attrs.remove('upload') == "true") {
 			out << g.uploadForm(attrs) {
@@ -112,7 +108,7 @@ class FormTagLib {
 			checked = true
 		}
 		
-		if(attrs.remove('inline') == 'true') {
+		if(Boolean.valueOf(ttrs.remove('inline'))) {
 			addToClass(attrs, "inline")
 		}
 		

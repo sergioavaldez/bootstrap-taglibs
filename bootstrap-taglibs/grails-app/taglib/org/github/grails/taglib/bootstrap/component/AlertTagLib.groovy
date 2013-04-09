@@ -2,7 +2,7 @@ package org.github.grails.taglib.bootstrap.component
 
 import org.github.grails.taglib.bootstrap.BaseTagLib;
 
-class AlertTagLib extends BaseTagLib{
+class AlertTagLib extends BaseTagLib {
 
 	static namespace = "bs"
 	

@@ -2,12 +2,22 @@ package org.github.grails.taglib.bootstrap
 
 class BaseTagLib {
 
+	static namespace = "bs"
+	
 	private final static String QUOTE = "\"";
 	private final static String SPACE = " ";
 	private final static String EQUALS = "=";
 	
 	protected static final String CURRENT_COMPONENT_ID 	 = "bsCurrentComponentId"
 	protected static final String CURRENT_COMPONENT_TYPE = "bsCurrentComponentType"
+	
+	def resources = {attrs->
+		def docsStyle = Boolean.valueOf(attrs.remove('docsStyle'))
+		out << "<link rel=\"stylesheet\" href=\"${g.resource(dir: 'css', file: 'bootstrap.min.css')}\" type=\"text/css\">\n"
+		if (docsStyle)
+			out << "<link rel=\"stylesheet\" href=\"${g.resource(dir: 'css', file: 'bootstrap.docs.css')}\" type=\"text/css\">\n"
+		out << g.javascript(src: 'bootstrap.min.js')
+	}
 	
 	/**
 	 * Create an id for the current component if it is not created, a assign it in 

@@ -2,7 +2,7 @@ package org.github.grails.taglib.bootstrap.scaffolding
 
 import org.github.grails.taglib.bootstrap.BaseTagLib;
 
-class GridTagLib extends BaseTagLib{
+class GridTagLib extends BaseTagLib {
 
 	static namespace = "bs"
 	

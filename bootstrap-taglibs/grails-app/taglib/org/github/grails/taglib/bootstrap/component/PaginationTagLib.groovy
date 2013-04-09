@@ -1,9 +1,9 @@
 package org.github.grails.taglib.bootstrap.component
 
-import static org.github.grails.taglib.bootstrap.Attribute.*;
+import org.github.grails.taglib.bootstrap.BaseTagLib;
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
-class PaginationTagLib {
+class PaginationTagLib extends BaseTagLib {
 
 	static namespace = "bs"
 	
